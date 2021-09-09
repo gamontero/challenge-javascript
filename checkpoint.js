@@ -33,7 +33,11 @@ const {
 // < 16
 
 function exponencial(exp) {
-
+    
+    return function (base) {
+      return  Math.pow(base, exp)
+       
+    }  
 }
 
 // ----- Recursión -----
@@ -69,9 +73,23 @@ function exponencial(exp) {
 // haciendo los movimientos SUR->ESTE->NORTE
 // Aclaraciones: el segundo parametro que recibe la funcion ('direccion') puede ser pasado vacio (null)
 
-function direcciones(laberinto) {
+function direcciones(laberinto, direccion = '') {
 
+    if (!laberinto) return direccion;   
+    for (let direccion in laberinto) {
+        if (typeof laberinto[cardinal] === 'object' ) {
+            direccion += cardinal; 
+            return direcciones(laberinto[key], direccion)
+        };
+        if (laberinto[key] === 'destino') {
+            direccion += cardinal; 
+            return direccion;
+        }    
+    }   
+    return direccion; 
 }
+
+
 
 
 // EJERCICIO 3
@@ -88,7 +106,11 @@ function direcciones(laberinto) {
 // deepEqualArrays([0,1,[[0,1,2],1,2]], [0,1,[[0,1,2],1,2]]) => true
 
 function deepEqualArrays(arr1, arr2) {
-
+    if (arr1.lenght !== arr2.lenght ) return false; 
+    for (let i = 0; i < arr1.length; 1++) {
+        if 
+        
+    }
 }
 
 
