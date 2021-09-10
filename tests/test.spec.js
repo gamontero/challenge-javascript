@@ -119,20 +119,20 @@ describe('Practica del Checkpoint M1', function(){
 
     describe("EJERCICIO 4: OrderedLinkedList metodo add", function(){
         let ll = new OrderedLinkedList()
-        xit("debe agregar nodos a la OrderedLinkedList", function(){
+        it("debe agregar nodos a la OrderedLinkedList", function(){
             ll.add(5)
             let ll2 = new OrderedLinkedList()
             ll2.head = new Node(5)
             expect(ll).to.be.deep.equal(ll2)
         })
-        xit("debe agregar nodos a la OrderedLinkedList, despues de los nodos mayores al argumento", function(){
+        it("debe agregar nodos a la OrderedLinkedList, despues de los nodos mayores al argumento", function(){
             ll.add(1)
             let ll2 = new OrderedLinkedList()
             ll2.head = new Node(5)
             ll2.head.next = new Node(1)
             expect(ll).to.be.deep.equal(ll2)
         })
-        xit("debe agregar nodos a la OrderedLinkedList, antes de los nodos menores al argumento", function(){
+        it("debe agregar nodos a la OrderedLinkedList, antes de los nodos menores al argumento", function(){
             ll.add(4)
             let ll2 = new OrderedLinkedList()
             ll2.head = new Node(5)
@@ -190,17 +190,17 @@ describe('Practica del Checkpoint M1', function(){
             {cb:()=>(arr.push('2-1'),'2-1'), time: 1},
             {cb:()=>(arr.push('2-2'),'2-2'), time: 4}
         ];
-        xit("todas las funciones(callbacks) deben haber sido llamadas", function(){
+        it("todas las funciones(callbacks) deben haber sido llamadas", function(){
             arr = []
             multiCallbacks([...cbs1], [...cbs2])
             expect(arr.length).to.be.equal(4)
         })
-        xit("las funciones deben haber sido llamadas en el orden correcto", function(){
+        it("las funciones deben haber sido llamadas en el orden correcto", function(){
             arr = []
             multiCallbacks([...cbs1], [...cbs2])
             expect(arr).to.be.deep.equal([ '2-1', '1-1', '1-2', '2-2' ])
         })
-        xit("la funcion 'multiCallbacks' debe retornar un array con los resultados en el orden correcto", function(){
+        it("la funcion 'multiCallbacks' debe retornar un array con los resultados en el orden correcto", function(){
             expect(multiCallbacks([...cbs1], [...cbs2])).to.be.deep.equal([ '2-1', '1-1', '1-2', '2-2' ])
         })
     })
@@ -209,37 +209,37 @@ describe('Practica del Checkpoint M1', function(){
         const BST = new BinarySearchTree(32)
         const arr = [8, 64, 5, 9];
         arr.forEach(e => BST.insert(e))
-        xit("Debe devolver un Array", function(){
+        it("Debe devolver un Array", function(){
             expect(BST.toArray() instanceof Array).to.be.true;
         })
-        xit("Debe devolver todos los elementos del arbol", function(){
+        it("Debe devolver todos los elementos del arbol", function(){
             expect(BST.toArray() instanceof Array).to.be.true;
             expect(BST.toArray().length).to.be.equal(5);
         })
-        xit("Debe devolver todos los elementos del arbol, en un array ordenado", function(){
+        it("Debe devolver todos los elementos del arbol, en un array ordenado", function(){
             expect(BST.toArray()).to.be.deep.equal([ 5, 8, 9, 32, 64 ]);
         })
     })
 
     describe("EJERCICIO 9: primalityTest", function(){
-        xit("debe de retornar 'true' si el numero es primo", function(){
+        it("debe de retornar 'true' si el numero es primo", function(){
             expect(primalityTest(2)).to.be.true;
             expect(primalityTest(3)).to.be.true;
             expect(primalityTest(5)).to.be.true;
             expect(primalityTest(7)).to.be.true;
         })
-        xit("debe de retornar 'false' si el numero NO es primo", function(){
+        it("debe de retornar 'false' si el numero NO es primo", function(){
             expect(primalityTest(4)).to.be.false;
             expect(primalityTest(6)).to.be.false;
             expect(primalityTest(8)).to.be.false;
             expect(primalityTest(9)).to.be.false;
         })
-        xit("debe de retornar 'false' si el numero es menor que 2", function(){
+        it("debe de retornar 'false' si el numero es menor que 2", function(){
             expect(primalityTest(-1)).to.be.false;
             expect(primalityTest(0)).to.be.false;
             expect(primalityTest(1)).to.be.false;
         })
-        xit("debe de estar lo suficientemente optimizado como para tardar menos de 2s con numeros grandes", function(){
+        it("debe de estar lo suficientemente optimizado como para tardar menos de 2s con numeros grandes", function(){
             expect(primalityTest(1902680207)).to.be.true;
         })
     })

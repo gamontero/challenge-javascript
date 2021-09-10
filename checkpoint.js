@@ -107,10 +107,13 @@ function direcciones(laberinto, direccion = '') {
 
 function deepEqualArrays(arr1, arr2) {
     if (arr1.lenght !== arr2.lenght ) return false; 
-    for (let i = 0; i < arr1.length; 1++) {
-        if 
+    for (let i = 0; i < arr1.length; i++) {
+        if (Array.isArray(arr1[i])) {
+            return deepEqualArrays(arr1[i], arr2[i]); 
+        } else if (arr1[i] !== arr2[i]) return false; 
         
-    }
+    }; 
+    return true; 
 }
 
 
@@ -161,7 +164,41 @@ OrderedLinkedList.prototype.print = function(){
 // < 'head --> 5 --> 3 --> 1 --> null'
 //               4
 OrderedLinkedList.prototype.add = function(val){
+    var newNode = new Node(val)
+    //estas vacia?
+    if(!this.head) {
+      // si, esta vacia
+      this.head = newNode;
+     } 
+     if (!current.next) {
+         if (current.value > val) {
+             const next = this.head;
+             this.head = newNode; 
+             this.head.next = next; 
+         } else {
+            current.next = newNode; 
+         };
+    }; 
+    if (current.value < val) {
+        const next = current.next;
+        current.next = newNode; 
+        current.next.next = next; 
+    };
+    current = current.next;
+
+}; 
     
+     //si tengo vagones, y quiero agregar
+    //donde lo quiero agregar?
+    //lo quiero agregar al final
+  ​  //como se cual es el final?
+      while(actual.next) {
+      actual = actual.next
+    }
+    //lo agrego al final
+      actual.next = nodo; 
+  ​}
+  return nodo   
 }
 
 
@@ -234,8 +271,17 @@ OrderedLinkedList.prototype.removeLower = function(){
 // < ["2-1", "1-1", "1-2", "2-2"];
 
 function multiCallbacks(cbs1, cbs2){
-    
-}
+var orden = cbs1.concat(cbs2).sort(function(a, b){
+     return a.time - b.time 
+        
+});
+var ArrayOrdenado = [];
+for (let i = 0; i < orden.length; i++) {
+        ArrayOrdenado.push(orden[i].cb())  
+  
+};
+return ArrayOrdenado
+};
 
 
 
@@ -253,6 +299,12 @@ function multiCallbacks(cbs1, cbs2){
 // resultado:[5,8,9,32,64]
 
 BinarySearchTree.prototype.toArray = function() {
+    var NuevoArray = [];
+    this.depthFirstForEach(function(value) {
+        NuevoArray.push(value)
+    })
+
+    return NuevoArray; 
     
 }
 
@@ -272,8 +324,14 @@ BinarySearchTree.prototype.toArray = function() {
 // informarse sobre algoritmos, leerlos de un pseudocodigo e implemnterlos alcanzara
 
 function primalityTest(n) {
-    
+    if (n < 2) return false; 
+    if (n % 2 !== 0) {
+        return true;
+    } else {
+        return false 
+    }
 }
+
 
 
 // EJERCICIO 10
